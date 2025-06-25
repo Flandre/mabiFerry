@@ -1,0 +1,625 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft Sans Serif', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+    color: #012273;
+    margin-bottom: 15px;
+    font-size: 2.2em;
+    font-weight: bold;
+}
+
+h2 {
+    color: #012273;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+h3 {
+    color: #3C76FF;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+/* 主布局 */
+.main-layout {
+    display: flex;
+    gap: 15px;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+}
+
+.left-panel {
+    width: 400px;
+    min-width: 400px;
+    height: 100%;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.right-panel {
+    flex: 1;
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* 控制面板样式 */
+.control-panel {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+.data-section,
+.current-channel-section,
+.calculation-results,
+.data-management-section {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.data-management-section {
+    border-bottom: none;
+}
+
+/* 数据输入样式 */
+.data-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.data-row {
+    display: grid;
+    grid-template-columns: 50px 80px 1fr 60px;
+    gap: 8px;
+    align-items: center;
+    padding: 6px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.data-row:hover {
+    background-color: #e9ecef;
+}
+
+.line-label {
+    font-weight: bold;
+    color: #012273;
+    font-size: 12px;
+    text-align: center;
+}
+
+.status-select {
+    padding: 4px 6px;
+    border: 1px solid #3C76FF;
+    border-radius: 3px;
+    font-size: 11px;
+    background-color: white;
+}
+
+.current-time {
+    padding: 4px 6px;
+    border: 1px solid #3C76FF;
+    border-radius: 3px;
+    font-size: 11px;
+}
+
+.display-time {
+    padding: 4px 6px;
+    border: 1px solid #3C76FF;
+    border-radius: 3px;
+    font-size: 11px;
+    text-align: center;
+}
+
+.status-select:focus,
+.current-time:focus,
+.display-time:focus,
+#current-channel:focus {
+    outline: none;
+    border-color: #012273;
+    box-shadow: 0 0 3px rgba(1, 34, 115, 0.3);
+}
+
+/* 当前线路选择样式 */
+.current-channel-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.current-channel-section h3 {
+    margin-bottom: 0;
+    font-size: 1em;
+}
+
+#current-channel {
+    padding: 6px 8px;
+    border: 1px solid #3C76FF;
+    border-radius: 4px;
+    font-size: 12px;
+    min-width: 100px;
+}
+
+/* 计算结果显示样式 */
+.result-display {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.result-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    border-left: 3px solid #3C76FF;
+}
+
+.result-item label {
+    font-weight: bold;
+    color: #012273;
+    font-size: 12px;
+}
+
+.result-item span {
+    color: #28a745;
+    font-family: monospace;
+    font-size: 11px;
+    word-break: break-all;
+}
+
+/* 数据管理按钮样式 */
+.data-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.data-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.export-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.export-btn:hover {
+    background-color: #218838;
+    transform: translateY(-1px);
+}
+
+.import-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.import-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+.clear-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.clear-btn:hover {
+    background-color: #c82333;
+    transform: translateY(-1px);
+}
+
+.reset-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.reset-btn:hover {
+    background-color: #545b62;
+    transform: translateY(-1px);
+}
+
+.data-btn:active {
+    transform: translateY(0);
+}
+
+/* 数据状态消息样式 */
+.data-status {
+    font-size: 11px;
+    padding: 6px 8px;
+    border-radius: 4px;
+    text-align: center;
+    transition: all 0.3s ease;
+    min-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.data-status.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.data-status.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.data-status.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* 时刻表容器样式 */
+.timetable-container {
+    background-color: #012273;
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    overflow-y: auto;
+}
+
+.update-time {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #FFA;
+}
+
+/* 港口组布局 - 新增两列布局 */
+.ports-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.port-group {
+    margin-bottom: 15px;
+}
+
+.port-label {
+    font-size: 27px;
+    font-weight: bold;
+    color: #FFF;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 时刻表样式 */
+.time-table-container {
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+}
+
+.time-table-header,
+.time-table-row {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #FFF;
+}
+
+.time-table-header {
+    background-color: #001F5D;
+    font-weight: bold;
+    padding: 10px 0;
+    border-bottom: 2px solid #FFF;
+}
+
+.time-table-row {
+    height: 42px;
+    border-top: 1px solid #fff;
+    background: linear-gradient(to bottom, #3C76FF, #3969e3 45%, #042e83 55%, #001F5D 100%);
+    transition: background 0.3s ease;
+}
+
+.time-table-row:hover {
+    background: linear-gradient(to bottom, #4a84ff, #4777eb 45%, #1a3e8b 55%, #002765 100%);
+}
+
+.time-table-col-1 {
+    padding-left: 10px;
+    width: 35%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.time-table-col-2,
+.time-table-col-3 {
+    width: 18%;
+    font-size: 16px;
+    color: #FFA;
+    font-weight: bold;
+}
+
+.time-table-col-4 {
+    width: 29%;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* 状态样式 */
+.status {
+    font-weight: bold;
+}
+
+.status.wait {
+    color: #ffff1a;
+    text-shadow: 0 0 3px rgba(255, 255, 26, 0.5);
+}
+
+.status.check-in {
+    color: #34ff34;
+    text-shadow: 0 0 3px rgba(52, 255, 52, 0.5);
+}
+
+/* 偏移状态样式 */
+.offset-status {
+    margin-right: 6px;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 4px 6px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.offset-status:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.offset-status.early {
+    color: #34ff34;
+    background-color: rgba(52, 255, 52, 0.1);
+}
+
+.offset-status.early:hover {
+    background-color: rgba(52, 255, 52, 0.2);
+}
+
+.offset-status.late {
+    color: #d80000;
+    background-color: rgba(216, 0, 0, 0.1);
+}
+
+.offset-status.late:hover {
+    background-color: rgba(216, 0, 0, 0.2);
+}
+
+.offset-status.active {
+    background-color: rgba(255, 255, 26, 0.3);
+    border: 2px solid #ffff1a;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* 频道偏移显示 */
+.channel-offset-display {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+}
+
+.channel-offset-display h3 {
+    color: #FFA;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.offset-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 8px;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .ports-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .port-label {
+        font-size: 25px;
+    }
+    
+    .time-table-header,
+    .time-table-row {
+        font-size: 15px;
+    }
+    
+    .time-table-col-1 {
+        width: 35%;
+        font-size: 17px;
+    }
+    
+    .time-table-col-2,
+    .time-table-col-3 {
+        width: 18%;
+        font-size: 15px;
+    }
+    
+    .time-table-col-4 {
+        width: 29%;
+        font-size: 14px;
+    }
+    
+    .offset-status {
+        font-size: 15px;
+    }
+    
+    .channel-offset-display h3 {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .main-layout {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .left-panel {
+        width: 100%;
+        min-width: auto;
+        height: auto;
+        max-height: 50vh;
+    }
+    
+    .right-panel {
+        height: auto;
+        min-height: 50vh;
+    }
+    
+    .data-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        text-align: center;
+    }
+    
+    .current-channel-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .data-buttons {
+        grid-template-columns: 1fr;
+    }
+    
+    .ports-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 5px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+    
+    .port-label {
+        font-size: 22px;
+    }
+    
+    .time-table-header,
+    .time-table-row {
+        font-size: 14px;
+    }
+    
+    .time-table-col-1 {
+        font-size: 16px;
+    }
+    
+    .time-table-col-2,
+    .time-table-col-3 {
+        font-size: 14px;
+    }
+    
+    .time-table-col-4 {
+        font-size: 13px;
+    }
+    
+    .offset-status {
+        font-size: 13px;
+    }
+    
+    .channel-offset-display h3 {
+        font-size: 15px;
+    }
+}
+
+/* 滚动条样式 */
+.left-panel::-webkit-scrollbar,
+.right-panel::-webkit-scrollbar,
+.timetable-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.left-panel::-webkit-scrollbar-track,
+.right-panel::-webkit-scrollbar-track,
+.timetable-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+.left-panel::-webkit-scrollbar-thumb,
+.right-panel::-webkit-scrollbar-thumb {
+    background: #3C76FF;
+    border-radius: 3px;
+}
+
+.timetable-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+/* 加载动画 */
+.loading {
+    text-align: center;
+    padding: 30px;
+    font-size: 16px;
+    color: #FFA;
+}
+
+/* 空状态 */
+.empty-state {
+    text-align: center;
+    padding: 30px;
+    color: #ccc;
+    font-style: italic;
+} 

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮渡时刻表系统</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>轮渡时刻表系统</h1>
+        
+        <div class="main-layout">
+            <!-- 左侧控制面板 -->
+            <div class="left-panel">
+                <div class="control-panel">
+                    <h2>基础数据设置</h2>
+                    
+                    <!-- 塞拉-凯安数据设置 -->
+                    <div class="data-section">
+                        <h3>塞拉港口-凯安港口数据</h3>
+                        <div class="data-inputs" id="iria-data">
+                            <div class="data-row">
+                                <span class="line-label">线路1:</span>
+                                <select class="status-select">
+                                    <option value="1">等船</option>
+                                    <option value="2" selected>等出发</option>
+                                </select>
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:35:03">
+                                <input type="text" class="display-time" value="1:09" placeholder="分:秒">
+                            </div>
+                            <div class="data-row">
+                                <span class="line-label">线路2:</span>
+                                <select class="status-select">
+                                    <option value="1">等船</option>
+                                    <option value="2" selected>等出发</option>
+                                </select>
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:34:42">
+                                <input type="text" class="display-time" value="2:06" placeholder="分:秒">
+                            </div>
+                            <div class="data-row">
+                                <span class="line-label">线路3:</span>
+                                <select class="status-select">
+                                    <option value="1">等船</option>
+                                    <option value="2" selected>等出发</option>
+                                </select>
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:34:22">
+                                <input type="text" class="display-time" value="0:53" placeholder="分:秒">
+                            </div>
+                            <div class="data-row">
+                                <span class="line-label">线路4:</span>
+                                <select class="status-select">
+                                    <option value="1">等船</option>
+                                    <option value="2" selected>等出发</option>
+                                </select>
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:34:01">
+                                <input type="text" class="display-time" value="1:55" placeholder="分:秒">
+                            </div>
+                            <div class="data-row">
+                                <span class="line-label">线路5:</span>
+                                <select class="status-select">
+                                    <option value="1">等船</option>
+                                    <option value="2" selected>等出发</option>
+                                </select>
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:33:45">
+                                <input type="text" class="display-time" value="4:08" placeholder="分:秒">
+                            </div>
+                            <div class="data-row">
+                                <span class="line-label">线路6:</span>
+                                <select class="status-select">
+                                    <option value="1">等船</option>
+                                    <option value="2" selected>等出发</option>
+                                </select>
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:33:25">
+                                <input type="text" class="display-time" value="2:42" placeholder="分:秒">
+                            </div>
+                            <div class="data-row">
+                                <span class="line-label">线路7:</span>
+                                <select class="status-select">
+                                    <option value="1">等船</option>
+                                    <option value="2" selected>等出发</option>
+                                </select>
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:33:07">
+                                <input type="text" class="display-time" value="5:14" placeholder="分:秒">
+                            </div>
+                            <div class="data-row">
+                                <span class="line-label">线路8:</span>
+                                <select class="status-select">
+                                    <option value="1">等船</option>
+                                    <option value="2" selected>等出发</option>
+                                </select>
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:32:45">
+                                <input type="text" class="display-time" value="1:31" placeholder="分:秒">
+                            </div>
+                            <div class="data-row">
+                                <span class="line-label">线路9:</span>
+                                <select class="status-select">
+                                    <option value="1">等船</option>
+                                    <option value="2" selected>等出发</option>
+                                </select>
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:32:23">
+                                <input type="text" class="display-time" value="3:44" placeholder="分:秒">
+                            </div>
+                            <div class="data-row">
+                                <span class="line-label">线路10:</span>
+                                <select class="status-select">
+                                    <option value="1">等船</option>
+                                    <option value="2" selected>等出发</option>
+                                </select>
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:31:21">
+                                <input type="text" class="display-time" value="3:53" placeholder="分:秒">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 卡普-贝尔法斯特数据设置 -->
+                    <div class="data-section">
+                        <h3>卡普港口-贝尔法斯特数据</h3>
+                        <div class="data-inputs" id="belvast-data">
+                            <div class="data-row">
+                                <span class="line-label">线路10:</span>
+                                <select class="status-select">
+                                    <option value="1" selected>等船</option>
+                                    <option value="2">等出发</option>
+                                </select>
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:38:27">
+                                <input type="text" class="display-time" value="0:47" placeholder="分:秒">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 当前选择的线路 -->
+                    <div class="current-channel-section">
+                        <h3>当前查看线路</h3>
+                        <select id="current-channel">
+                            <option value="0">线路1</option>
+                            <option value="1">线路2</option>
+                            <option value="2">线路3</option>
+                            <option value="3">线路4</option>
+                            <option value="4">线路5</option>
+                            <option value="5">线路6</option>
+                            <option value="6">线路7</option>
+                            <option value="7">线路8</option>
+                            <option value="8">线路9</option>
+                            <option value="9" selected>线路10</option>
+                        </select>
+                    </div>
+
+                    <!-- 计算结果显示 -->
+                    <div class="calculation-results">
+                        <h3>计算结果</h3>
+                        <div class="result-display">
+                            <div class="result-item">
+                                <label>伊利亚基础时间:</label>
+                                <span id="calculated-iria-time">计算中...</span>
+                            </div>
+                            <div class="result-item">
+                                <label>贝尔法斯特基础时间:</label>
+                                <span id="calculated-belvast-time">计算中...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧时刻表显示区域 -->
+            <div class="right-panel">
+                <div class="timetable-container">
+                    <h2>轮渡时刻表</h2>
+                    <div class="update-time">
+                        <span>更新时间: <span id="update-time"></span></span>
+                    </div>
+                    
+                    <!-- 港口时刻表 -->
+                    <div id="timetable-content">
+                        <!-- 动态生成的时刻表内容 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
