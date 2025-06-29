@@ -84,7 +84,17 @@ h3 {
 }
 
 .data-management-section {
-    border-bottom: none;
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.data-management-section h3 {
+    margin: 0 0 15px 0;
+    color: #495057;
+    font-size: 1.1em;
 }
 
 /* 数据输入样式 */
@@ -200,8 +210,8 @@ h3 {
 
 /* 数据管理按钮样式 */
 .data-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 10px;
 }
@@ -210,55 +220,84 @@ h3 {
     padding: 8px 12px;
     border: none;
     border-radius: 4px;
-    font-size: 11px;
-    font-weight: bold;
     cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 500;
     transition: all 0.2s ease;
-    text-align: center;
+    white-space: nowrap;
 }
 
 .export-btn {
-    background-color: #28a745;
+    background: #28a745;
     color: white;
 }
 
 .export-btn:hover {
-    background-color: #218838;
-    transform: translateY(-1px);
+    background: #218838;
 }
 
 .import-btn {
-    background-color: #007bff;
+    background: #17a2b8;
     color: white;
 }
 
 .import-btn:hover {
-    background-color: #0056b3;
-    transform: translateY(-1px);
+    background: #138496;
 }
 
 .clear-btn {
-    background-color: #dc3545;
+    background: #dc3545;
     color: white;
 }
 
 .clear-btn:hover {
-    background-color: #c82333;
-    transform: translateY(-1px);
+    background: #c82333;
 }
 
 .reset-btn {
-    background-color: #6c757d;
+    background: #6c757d;
     color: white;
 }
 
 .reset-btn:hover {
-    background-color: #545b62;
-    transform: translateY(-1px);
+    background: #5a6268;
 }
 
-.data-btn:active {
-    transform: translateY(0);
+.recalibrate-btn {
+    background: #fd7e14;
+    color: white;
+}
+
+.recalibrate-btn:hover {
+    background: #e8681a;
+}
+
+.debug-btn {
+    background: #6f42c1;
+    color: white;
+}
+
+.debug-btn:hover {
+    background: #5a32a3;
+}
+
+.data-status {
+    min-height: 20px;
+    padding: 5px 0;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.data-status.success {
+    color: #28a745;
+}
+
+.data-status.error {
+    color: #dc3545;
+}
+
+.data-status.info {
+    color: #17a2b8;
 }
 
 /* 数据状态消息样式 */
@@ -534,7 +573,12 @@ h3 {
     }
     
     .data-buttons {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+    }
+    
+    .data-btn {
+        width: 100%;
+        text-align: center;
     }
     
     .ports-grid {
@@ -580,6 +624,15 @@ h3 {
     
     .channel-offset-display h3 {
         font-size: 15px;
+    }
+    
+    .data-buttons {
+        flex-direction: column;
+    }
+    
+    .data-btn {
+        width: 100%;
+        text-align: center;
     }
 }
 

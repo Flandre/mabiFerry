@@ -8,7 +8,22 @@
 </head>
 <body>
     <div class="container">
-        <h1>轮渡时刻表系统</h1>
+        <h1>轮渡时刻表预测系统</h1>
+        
+        <div class="usage-notice" style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #2196f3;">
+            <h3 style="margin: 0 0 10px 0; color: #1976d2;">📝 使用说明</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #424242;">
+                <strong>新版本特性：</strong>本系统现在完全基于您的实时观察数据计算基础时间，无需依赖固定的历史时间。
+                每次游戏维护后，只需重新输入观察数据即可自动校准。
+                <br><br>
+                <strong>操作步骤：</strong>
+                1. 在游戏中观察塞拉港口-凯安港口的1-10线轮渡状态
+                2. 记录观察时的当前时间和显示的剩余时间
+                3. 状态选择：等候（船在路上）或检票中（船已到港）
+                4. 输入一条贝尔法斯特-卡普港口的10线数据（可选）
+                5. 系统将自动计算并显示所有线路的准确时刻表
+            </p>
+        </div>
         
         <div class="main-layout">
             <!-- 左侧控制面板 -->
@@ -23,91 +38,91 @@
                             <div class="data-row">
                                 <span class="line-label">线路1:</span>
                                 <select class="status-select">
-                                    <option value="1">等船</option>
-                                    <option value="2" selected>等出发</option>
+                                    <option value="1">等候</option>
+                                    <option value="2" selected>检票中</option>
                                 </select>
-                                <input type="datetime-local" class="current-time" value="2025-02-18T15:35:03">
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:35:03" step="1">
                                 <input type="text" class="display-time" value="1:09" placeholder="分:秒">
                             </div>
                             <div class="data-row">
                                 <span class="line-label">线路2:</span>
                                 <select class="status-select">
-                                    <option value="1">等船</option>
-                                    <option value="2" selected>等出发</option>
+                                    <option value="1">等候</option>
+                                    <option value="2" selected>检票中</option>
                                 </select>
-                                <input type="datetime-local" class="current-time" value="2025-02-18T15:34:42">
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:34:42" step="1">
                                 <input type="text" class="display-time" value="2:06" placeholder="分:秒">
                             </div>
                             <div class="data-row">
                                 <span class="line-label">线路3:</span>
                                 <select class="status-select">
-                                    <option value="1">等船</option>
-                                    <option value="2" selected>等出发</option>
+                                    <option value="1">等候</option>
+                                    <option value="2" selected>检票中</option>
                                 </select>
-                                <input type="datetime-local" class="current-time" value="2025-02-18T15:34:22">
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:34:22" step="1">
                                 <input type="text" class="display-time" value="0:53" placeholder="分:秒">
                             </div>
                             <div class="data-row">
                                 <span class="line-label">线路4:</span>
                                 <select class="status-select">
-                                    <option value="1">等船</option>
-                                    <option value="2" selected>等出发</option>
+                                    <option value="1">等候</option>
+                                    <option value="2" selected>检票中</option>
                                 </select>
-                                <input type="datetime-local" class="current-time" value="2025-02-18T15:34:01">
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:34:01" step="1">
                                 <input type="text" class="display-time" value="1:55" placeholder="分:秒">
                             </div>
                             <div class="data-row">
                                 <span class="line-label">线路5:</span>
                                 <select class="status-select">
-                                    <option value="1">等船</option>
-                                    <option value="2" selected>等出发</option>
+                                    <option value="1">等候</option>
+                                    <option value="2" selected>检票中</option>
                                 </select>
-                                <input type="datetime-local" class="current-time" value="2025-02-18T15:33:45">
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:33:45" step="1">
                                 <input type="text" class="display-time" value="4:08" placeholder="分:秒">
                             </div>
                             <div class="data-row">
                                 <span class="line-label">线路6:</span>
                                 <select class="status-select">
-                                    <option value="1">等船</option>
-                                    <option value="2" selected>等出发</option>
+                                    <option value="1">等候</option>
+                                    <option value="2" selected>检票中</option>
                                 </select>
-                                <input type="datetime-local" class="current-time" value="2025-02-18T15:33:25">
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:33:25" step="1">
                                 <input type="text" class="display-time" value="2:42" placeholder="分:秒">
                             </div>
                             <div class="data-row">
                                 <span class="line-label">线路7:</span>
                                 <select class="status-select">
-                                    <option value="1">等船</option>
-                                    <option value="2" selected>等出发</option>
+                                    <option value="1">等候</option>
+                                    <option value="2" selected>检票中</option>
                                 </select>
-                                <input type="datetime-local" class="current-time" value="2025-02-18T15:33:07">
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:33:07" step="1">
                                 <input type="text" class="display-time" value="5:14" placeholder="分:秒">
                             </div>
                             <div class="data-row">
                                 <span class="line-label">线路8:</span>
                                 <select class="status-select">
-                                    <option value="1">等船</option>
-                                    <option value="2" selected>等出发</option>
+                                    <option value="1">等候</option>
+                                    <option value="2" selected>检票中</option>
                                 </select>
-                                <input type="datetime-local" class="current-time" value="2025-02-18T15:32:45">
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:32:45" step="1">
                                 <input type="text" class="display-time" value="1:31" placeholder="分:秒">
                             </div>
                             <div class="data-row">
                                 <span class="line-label">线路9:</span>
                                 <select class="status-select">
-                                    <option value="1">等船</option>
-                                    <option value="2" selected>等出发</option>
+                                    <option value="1">等候</option>
+                                    <option value="2" selected>检票中</option>
                                 </select>
-                                <input type="datetime-local" class="current-time" value="2025-02-18T15:32:23">
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:32:23" step="1">
                                 <input type="text" class="display-time" value="3:44" placeholder="分:秒">
                             </div>
                             <div class="data-row">
                                 <span class="line-label">线路10:</span>
                                 <select class="status-select">
-                                    <option value="1">等船</option>
-                                    <option value="2" selected>等出发</option>
+                                    <option value="1">等候</option>
+                                    <option value="2" selected>检票中</option>
                                 </select>
-                                <input type="datetime-local" class="current-time" value="2025-02-18T15:31:21">
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:31:21" step="1">
                                 <input type="text" class="display-time" value="3:53" placeholder="分:秒">
                             </div>
                         </div>
@@ -120,10 +135,10 @@
                             <div class="data-row">
                                 <span class="line-label">线路10:</span>
                                 <select class="status-select">
-                                    <option value="1" selected>等船</option>
-                                    <option value="2">等出发</option>
+                                    <option value="1" selected>等候</option>
+                                    <option value="2">检票中</option>
                                 </select>
-                                <input type="datetime-local" class="current-time" value="2025-02-18T15:38:27">
+                                <input type="datetime-local" class="current-time" value="2025-02-18T15:38:27" step="1">
                                 <input type="text" class="display-time" value="0:47" placeholder="分:秒">
                             </div>
                         </div>
@@ -160,6 +175,8 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- 数据管理区域将由JavaScript动态创建 -->
                 </div>
             </div>
 
