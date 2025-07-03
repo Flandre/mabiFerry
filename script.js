@@ -17,57 +17,57 @@ const I18N = {
     'CHECK IN': '检票中'
 };
 
-// 轮渡路线配置
+// 轮渡路线配置 - 所有伊利亚港口timeOffset减去60，恢复以"卡普→克拉"为基准
 const Ferry = [
     {
         from: 'Port Sella',
         to: 'Port Ceann',
         baseTime: 'Iria',
-        timeOffset: 60,
+        timeOffset: 0,  // 60 - 60 = 0
     },
     {
         from: 'Port Connous',
         to: 'Port Ceann',
         baseTime: 'Iria',
-        timeOffset: 60,
+        timeOffset: 0,  // 60 - 60 = 0
     },
     {
         from: 'Port Ceann',
         to: 'Port Sella',
         baseTime: 'Iria',
-        timeOffset: 0,
+        timeOffset: -60,  // 相对于塞拉→凯安基准的偏移
     },
     {
         from: 'Port Ceann',
         to: 'Port Connous',
         baseTime: 'Iria',
-        timeOffset: 30,
+        timeOffset: -30,  // 30 - 60 = -30
     },
     {
         from: 'Port Cobh',
         to: 'Port Qilla',
         baseTime: 'Iria',
-        timeOffset: 0,
+        timeOffset: -60,  // 0 - 60 = -60，重新成为基准参考
         checkTicket: true
     },
     {
         from: 'Port Qilla',
         to: 'Port Cobh',
         baseTime: 'Iria',
-        timeOffset: 30,
+        timeOffset: -30,  // 30 - 60 = -30
     },
     {
         from: 'Port Cobh',
         to: 'Belvast Island',
         baseTime: 'Belvast',
-        timeOffset: 0,
+        timeOffset: 0,  // 贝尔法斯特路线不变
         checkTicket: true
     },
     {
         from: 'Belvast Island',
         to: 'Port Cobh',
         baseTime: 'Belvast',
-        timeOffset: 30,
+        timeOffset: 30,  // 贝尔法斯特路线不变
     }
 ];
 
@@ -303,20 +303,20 @@ const DataManager = {
         const currentTimeStr = now.toISOString().slice(0, 19);
         
         const defaultIriaData = [
-            { status: '2', currentTime: '2025-06-26T16:54:07', displayTime: '3:31' },
-            { status: '2', currentTime: '2025-06-26T16:54:07', displayTime: '2:06' },
-            { status: '2', currentTime: '2025-06-26T16:54:07', displayTime: '0:53' },
-            { status: '2', currentTime: '2025-06-26T16:54:07', displayTime: '1:55' },
-            { status: '2', currentTime: '2025-06-26T16:54:07', displayTime: '4:08' },
-            { status: '2', currentTime: '2025-06-26T16:54:07', displayTime: '2:42' },
-            { status: '2', currentTime: '2025-06-26T16:54:07', displayTime: '5:14' },
-            { status: '2', currentTime: '2025-06-26T16:54:07', displayTime: '1:31' },
-            { status: '2', currentTime: '2025-06-26T16:54:07', displayTime: '3:44' },
-            { status: '2', currentTime: '2025-06-26T16:54:07', displayTime: '3:53' }
+            { status: '2', currentTime: '2025-07-02 17:55:27', displayTime: '4:32' },
+            { status: '2', currentTime: '2025-07-02 17:55:08', displayTime: '5:05' },
+            { status: '2', currentTime: '2025-07-02 17:54:46', displayTime: '5:17' },
+            { status: '2', currentTime: '2025-07-02 17:54:25', displayTime: '5:52' },
+            { status: '1', currentTime: '2025-07-02 17:54:04', displayTime: '0:13' },
+            { status: '1', currentTime: '2025-07-02 17:53:48', displayTime: '0:27' },
+            { status: '1', currentTime: '2025-07-02 17:53:32', displayTime: '2:13' },
+            { status: '1', currentTime: '2025-07-02 17:53:17', displayTime: '1:02' },
+            { status: '1', currentTime: '2025-07-02 17:52:58', displayTime: '1:19' },
+            { status: '1', currentTime: '2025-07-02 17:52:06', displayTime: '2:10' }
         ];
         
         const defaultBelvastData = [
-            { status: '1', currentTime: currentTimeStr, displayTime: '0:47' }
+            { status: '2', currentTime: '2025-07-03 08:23:59', displayTime: '1:46' }
         ];
         
         this.restoreIriaData(defaultIriaData);
@@ -403,13 +403,21 @@ const formatTimeAsLocalISO = (timestamp) => {
 let debugOutputShown = false;
 
 // 重新设计的到港时间计算函数
-const createTimeInfo = (status, currentTimeStr, displayTimeStr) => {
+const createTimeInfo = (status, currentTimeStr, displayTimeStr, isIriaData = true) => {
     const currentTime = parseTimeStringAsLocal(currentTimeStr);
     const displaySeconds = parseDisplayTime(displayTimeStr);
     
-    // 伊利亚时间间隔：等候5分钟，检票6分钟
-    const waitTime = 5 * 60; // 等候时间（秒）
-    const checkInTime = 6 * 60; // 检票时间（秒）
+    // 根据数据类型选择正确的时间间隔
+    let waitTime, checkInTime;
+    if (isIriaData) {
+        // 伊利亚时间间隔：等候5分钟，检票6分钟
+        waitTime = 5 * 60;
+        checkInTime = 6 * 60;
+    } else {
+        // 贝尔法斯特时间间隔：等候2分30秒，检票3分30秒
+        waitTime = 2.5 * 60;
+        checkInTime = 3.5 * 60;
+    }
     
     let arrivalTime;
     
@@ -468,7 +476,7 @@ const calculateBaseTimeFromData = () => {
                         status: status,
                         currentTime: currentTime,
                         displayTime: displayTime,
-                        arrivalTime: createTimeInfo(status, currentTime, displayTime)
+                        arrivalTime: createTimeInfo(status, currentTime, displayTime, true)
                     });
                 }
             }
@@ -493,7 +501,7 @@ const calculateBaseTimeFromData = () => {
                         status: status,
                         currentTime: currentTime,
                         displayTime: displayTime,
-                        arrivalTime: createTimeInfo(status, currentTime, displayTime)
+                        arrivalTime: createTimeInfo(status, currentTime, displayTime, false)
                     });
                 }
             }
@@ -1064,12 +1072,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const dataLoaded = DataManager.loadData();
     if (dataLoaded) {
         showDataStatus('已加载保存的数据', 'success');
+        // 重置调试输出标记，确保首次加载时能输出调试信息
+        debugOutputShown = false;
+        calculateBaseTimeFromData();
+        renderTimetable();
+    } else {
+        // 如果没有保存的数据，使用默认数据
+        DataManager.resetToDefault();
+        showDataStatus('已加载默认数据', 'info');
     }
     
-    // 重置调试输出标记，确保首次加载时能输出调试信息
-    debugOutputShown = false;
-    calculateBaseTimeFromData();
-    renderTimetable();
     addInputListeners();
     
     setInterval(() => {
@@ -1084,7 +1096,7 @@ const runIndependentTest = () => {
     // 测试createTimeInfo函数
     console.log('\n--- createTimeInfo函数测试 ---');
     const testCase = [2, '2025-06-26T16:54:07', '3:31'];
-    const result = createTimeInfo(...testCase);
+    const result = createTimeInfo(...testCase, true);
     
     console.log('输入:', testCase);
     console.log('输出时间戳:', result);
@@ -1108,7 +1120,7 @@ const runIndependentTest = () => {
     // 测试等候状态
     console.log('\n--- 等候状态测试 ---');
     const waitTestCase = [1, '2025-06-26T16:54:07', '2:15'];
-    const waitResult = createTimeInfo(...waitTestCase);
+    const waitResult = createTimeInfo(...waitTestCase, true);
     const waitInputTime = parseTimeStringAsLocal('2025-06-26T16:54:07');
     const waitDisplaySeconds = 2 * 60 + 15; // 2:15 = 135秒
     const waitExpectedArrival = waitInputTime + waitDisplaySeconds * 1000;
@@ -1139,7 +1151,7 @@ const validateTimeCalculation = () => {
     
     // 使用第一个测试用例作为基准计算基础时间
     const baseTestCase = testCases[0];
-    const baseArrivalTime = createTimeInfo(...baseTestCase);
+    const baseArrivalTime = createTimeInfo(...baseTestCase, true);
     console.log('基准到港时间:', new Date(baseArrivalTime).toLocaleString('zh-CN'));
     
     // 临时设置基础时间进行测试
@@ -1157,7 +1169,7 @@ const validateTimeCalculation = () => {
         console.log('期望剩余:', expectedRemain);
         
         // 计算该测试用例的实际到港时间
-        const actualArrivalTime = createTimeInfo(...testCase);
+        const actualArrivalTime = createTimeInfo(...testCase, true);
         console.log('实际到港时间:', new Date(actualArrivalTime).toLocaleString('zh-CN'));
         
         // 使用系统计算时刻表
@@ -1220,7 +1232,7 @@ const quickTest = () => {
     // 计算各测试用例的到港时间
     testCases.forEach((testCase, index) => {
         const [status, timeStr, displayTime] = testCase;
-        const arrivalTime = createTimeInfo(status, timeStr, displayTime);
+        const arrivalTime = createTimeInfo(status, timeStr, displayTime, true);
         
         console.log(`测试用例 ${index + 1}:`, {
             输入: testCase,
@@ -1233,7 +1245,7 @@ const quickTest = () => {
     
     // 使用第一个测试用例设置基础时间
     const baseTestCase = testCases[0];
-    const baseArrivalTime = createTimeInfo(...baseTestCase);
+    const baseArrivalTime = createTimeInfo(...baseTestCase, true);
     
     console.log('\n--- 基础时间设置 ---');
     console.log('基准到港时间:', new Date(baseArrivalTime).toLocaleString('zh-CN'));
